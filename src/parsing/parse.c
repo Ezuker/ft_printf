@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 21:20:50 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/20 23:15:10 by bcarolle         ###   ########.fr       */
+/*   Created: 2024/03/20 23:12:44 by bcarolle          #+#    #+#             */
+/*   Updated: 2024/03/20 23:17:27 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *s, ...)
+static void    add_data(t_data *data, char *cursor)
 {
-    va_list args;
-    t_data  *data;
+    t_data  *new_data;
 
-    data = malloc(sizeof(t_data));
-    struct_init(data);
-    parse(data, (char *)s);
-    va_start(args, s);
-    
-    va_end(args);
-    return (0);
+    new_data = malloc(sizeof(t_data));
+    data->next = new_data;
 }
 
-int main()
+void    parse(t_data *data, char *string)
 {
-    printf("%.5g\n", 3.4253); //will print 5 DIGITS (excluding .)
-    printf("%.5G\n", 3.42443); // in uppercase
+    char    *cursor;
 
-    printf("%.6f\n", 10.564652146);
-    printf("%.4X\n", 5465544);
+    cursor = string;
+    while (*cursor)
+    {
+        if (*cursor == '%')
+            add_data(data, cursor); //cursor gonna increment though the parsing adddata
+        
+        cursor++;
+    }
 }

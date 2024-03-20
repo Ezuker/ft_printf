@@ -25,6 +25,8 @@ _IWHITE=$'\033[47m
 
 SRC = \
 	src/main.c \
+	src/parsing/parse.c \
+	src/utils/struct_init.c \
 
 INCLUDES = \
 	-I./include/ \
