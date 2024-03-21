@@ -26,7 +26,14 @@ _IWHITE=$'\033[47m
 SRC = \
 	src/main.c \
 	src/parsing/parse.c \
+	src/parsing/flags.c \
+	src/parsing/width.c \
+	src/parsing/precision.c \
+	src/parsing/length.c \
+	src/parsing/type.c \
 	src/utils/struct_init.c \
+	src/utils/ft_atoi.c \
+	src/converter/converting.c \
 
 INCLUDES = \
 	-I./include/ \
@@ -63,12 +70,12 @@ $(NAME): $(OBJ)
 $(BUILD_DIR)%.o: %.c
 	@ \
 	if [ $(IS_COMPILING) -eq 0 ]; then \
-		mkdir -p $(@D) ./build; \
 		echo; \
 		echo "$(_BOLD)$(_CYAN)Entering ($(_RED)./src$(_CYAN))$(_END)"; \
 		echo; \
 	fi
 	@$(eval IS_COMPILING = 1)
+	@mkdir -p $(dir $@)
 	@echo "$(_BOLD)$(_RED) $< : $(_END) $(_GREY) $(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ $(_END)"
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 

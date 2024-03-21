@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:10:44 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/20 23:11:53 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:48:28 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ typedef enum e_data_type
     POINTER,
     PERCENT,
     DECIMAL,
-    INTEGER,
     UNSIGNED,
     OCTAL,
     HEXADECIMAL,
