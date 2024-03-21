@@ -6,37 +6,30 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 14:17:12 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/21 14:56:30 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:59:00 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    write_decimal(t_data **data, char **s, long long number)
-{
-    
-}
-
 void    converter(t_data **data, char **s, va_list args)
 {
+    char    *result;
+
     *data = (*data)->next;
     if ((*data)->type == DECIMAL)
-    {
-        if ((*data)->length_type == LENGTH_NONE)
-            write_decimal(data, s, va_arg(args, int));
-        if ((*data)->length_type == H)
-            write_decimal(data, s, (short)va_arg(args, int));
-        if ((*data)->length_type == HH)
-            write_decimal(data, s, (char)va_arg(args, int));
-        if ((*data)->length_type == L)
-            write_decimal(data, s, va_arg(args, long));
-        if ((*data)->length_type == LL)
-            write_decimal(data, s, va_arg(args, long long));
-        if ((*data)->length_type == J)
-            write_decimal(data, s, va_arg(args, intmax_t));
-        if ((*data)->length_type == Z)
-            write_decimal(data, s, va_arg(args, size_t));
-        if ((*data)->length_type == T)
-            write_decimal(data, s, va_arg(args, ptrdiff_t));
-    }
+        result = get_decimal(data, s, args);
+    if ((*data)->type == STRING)
+        get_string(data, args);
+    if ((*data)->type == CHAR)
+        get_char(data, args);
+    if ((*data)->type == POINTER)
+        result = va_arg(args, void *);
+    if ((*data)->type == HEXADECIMAL || (*data)->type == HEXADECIMAL_CAPITAL)
+        result = get_hexa(data, s, args);
+    if ((*data)->type == OCTAL)
+        result = get_octal(data, s, args);
+    if ((*data)->type == UNSIGNED)
+        result = get_unsigned(data, s, args);
+    (*data)->string = result;
 }

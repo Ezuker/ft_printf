@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:10:44 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/21 13:48:28 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:57:52 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,10 @@ typedef struct s_data
     t_precision     precision;
     t_flags         flag_type;
     t_length        length_type;
-    struct s_data   *next;
+    char            *string;
+    wchar_t          *w_string;
     t_data_type     type;
+    struct s_data   *next;
 }               t_data;
 
 #endif

@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_init.c                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 23:13:27 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/21 16:55:24 by bcarolle         ###   ########.fr       */
+/*   Created: 2024/03/21 15:20:56 by bcarolle          #+#    #+#             */
+/*   Updated: 2024/03/21 17:01:02 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    struct_init(t_data *data)
+size_t  ft_strlen(const char *s)
 {
-    data->flag_type = FLAGS_NONE;
-    data->width = 0;
-    data->precision.type = PRECISION_NONE;
-    data->length_type = LENGTH_NONE;
-    data->type = DATA_NONE;
-    data->string = NULL;
-    data->w_string = NULL;
-    data->next = NULL;
+    size_t  i;
+
+    i = 0;
+    while (s[i])
+        i++;
+    return (i);
+}
+
+size_t  ft_wstrlen(const wchar_t *s)
+{
+    size_t  i;
+
+    i = 0;
+    while (s[i])
+        i++;
+    return (i);
 }

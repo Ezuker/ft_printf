@@ -33,7 +33,18 @@ SRC = \
 	src/parsing/type.c \
 	src/utils/struct_init.c \
 	src/utils/ft_atoi.c \
+	src/utils/ft_strlen.c \
+	src/utils/ft_itoa.c \
+	src/utils/ft_strdup.c \
+	src/utils/ft_wcstombs.c \
 	src/converter/converting.c \
+	src/converter/decimal.c \
+	src/converter/octal.c \
+	src/converter/unsigned.c \
+	src/converter/hexadecimal.c \
+	src/converter/char.c \
+	src/converter/string.c \
+
 
 INCLUDES = \
 	-I./include/ \

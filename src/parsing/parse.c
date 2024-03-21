@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:12:44 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/21 14:02:37 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:15:02 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,18 @@ static void    add_data(t_data *data, char **cursor)
 
 void    parse(t_data *data, char *string)
 {
-    char    *cursor;
+    char    **cursor;
 
-    cursor = string;
-    while (*cursor)
+    cursor = &string;
+    while (**cursor)
     {
-        if (*cursor == '%')
+        if (**cursor == '%')
         {
-            cursor++;
-            add_data(data, &cursor); //cursor gonna increment though the parsing adddata
+            (*cursor)++;
+            add_data(data, cursor); //cursor gonna increment though the parsing adddata
         }
-        cursor++;
+        if (!**cursor)
+            break ;
+        (*cursor)++;
     }
 }
