@@ -6,15 +6,15 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:21:19 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/21 16:23:22 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:40:54 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int  ft_intlen(int n, int base)
+static int  ft_intlen(intmax_t n, int base)
 {
-    int i;
+    intmax_t i;
 
     i = 0;
     if (n < 0)

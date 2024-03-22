@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 21:20:50 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/21 18:07:40 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/22 23:50:25 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ int ft_printf(const char *s, ...)
         if (*string == '%')
         {
             converter(&data, &string, args);
+            write(1, data->string, ft_strlen(data->string));
+            write(1, "\n", 1);
             // write(1, data->w_string, ft_wstrlen(data->w_string));
-            char mbstr[(2 * ft_wstrlen(data->w_string)) + 1]; // allocate enough space for the multibyte string
-            size_t len = ft_wcstombs(mbstr, data->w_string, sizeof(mbstr)); // convert the wide string to a multibyte string
-            if (len != (size_t)-1) // if the conversion was successful
-            {
-                write(1, mbstr, len); // write the multibyte string
-            }
+            // char mbstr[(2 * ft_wstrlen(data->w_string)) + 1]; // allocate enough space for the multibyte string
+            // size_t len = ft_wcstombs(mbstr, data->w_string, sizeof(mbstr)); // convert the wide string to a multibyte string
+            // if (len != (size_t)-1) // if the conversion was successful
+            // {
+            //     write(1, mbstr, len); // write the multibyte string
+            // }
             break;
         }
         else
@@ -47,14 +49,29 @@ int ft_printf(const char *s, ...)
     return (0);
 }
 
+void    vaargtest(const char *s, ...)
+{
+    va_list args;
+    va_start(args, s);
+    int *test = va_arg(args, int *);
+    printf("%d\n", *test);
+    va_end(args);
+    
+}
+
 int main()
 {
-    setlocale(LC_ALL, "");
+    double  test = FLT_MAX;
+    long double  test2 = FLT_MAX;
+    printf("%a\n", test);
+    printf("%La\n", test2);
 
-    printf("%ls\n", L"ππ");
-    printf("%c\n", 'a');
-
-
-    ft_printf("%ls\n", L"ππ");
-    // ft_printf("%c\n", 'a');
+    // long double   test2 = 54484894684.48948948948;
+    // setlocale(LC_ALL, "");
+    // ft_printf("%ls\n", L"ππ");
+    // ft_printf("%a\n", test);
+    // ft_printf("%La\n", test2);
+    // printf("0x%xp+\n", test4);  
+    // printf("%s\n", ft_itoa((intmax_t) test, 16, "0123456789abcdef"));
+    // ft_printf("%g %LG\n", test, test2);
 }

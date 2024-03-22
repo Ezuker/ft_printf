@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 14:00:44 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/21 14:42:11 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/22 21:27:52 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ t_data_type get_type(char **cursor)
     if (**cursor == 'G')
         return (return_type(cursor, G_CAPITAL));
     if (**cursor == 'a')
-        return (return_type(cursor, HEXADECIMAL_FLOATING));
+        return (return_type(cursor, HEXA_FLOATING));
     if (**cursor == 'A')
-        return (return_type(cursor, HEXADECIMAL_FLOATING_CAPITAL));
+        return (return_type(cursor, HEXA_FLOATING_CAPITAL));
     if (**cursor == 'c')
         return (return_type(cursor, CHAR));
     if (**cursor == 's')

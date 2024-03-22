@@ -37,6 +37,14 @@ SRC = \
 	src/utils/ft_itoa.c \
 	src/utils/ft_strdup.c \
 	src/utils/ft_wcstombs.c \
+	src/utils/ft_ftoa.c \
+	src/utils/ft_strjoin.c \
+	src/utils/ft_roundf.c \
+	src/utils/ft_recalloc.c \
+	src/utils/ft_pow.c \
+	src/utils/ft_nb_floating_digit.c \
+	src/utils/ft_toupper.c \
+	src/utils/ft_remove_zero.c \
 	src/converter/converting.c \
 	src/converter/decimal.c \
 	src/converter/octal.c \
@@ -44,6 +52,11 @@ SRC = \
 	src/converter/hexadecimal.c \
 	src/converter/char.c \
 	src/converter/string.c \
+	src/converter/pointer.c \
+	src/converter/float.c \
+	src/converter/scientific.c \
+	src/converter/shortest_float.c \
+	src/converter/hexa_floating_point.c \
 
 
 INCLUDES = \

@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:56:46 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/21 14:34:01 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/22 21:27:43 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_precision_type    get_precision_type(t_data_type type)
     if (type == DECIMAL || type == OCTAL ||
         type == UNSIGNED || type == HEXADECIMAL || type == HEXADECIMAL)
         return (INTEGERS);
-    if (type == HEXADECIMAL_FLOATING || type == HEXADECIMAL_FLOATING_CAPITAL
+    if (type == HEXA_FLOATING || type == HEXA_FLOATING_CAPITAL
         || type == SCIENTIFIC || type == SCIENTIFIC_CAPITAL || type == FLOAT)
         return (OTHER);
     if (type == STRING)

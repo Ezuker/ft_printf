@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:10:44 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/21 16:57:52 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/22 21:27:30 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ typedef enum e_data_type
     FLOAT,
     SCIENTIFIC,
     SCIENTIFIC_CAPITAL,
-    HEXADECIMAL_FLOATING,
-    HEXADECIMAL_FLOATING_CAPITAL,
+    HEXA_FLOATING,
+    HEXA_FLOATING_CAPITAL,
     G,
     G_CAPITAL,
     NOTHING,

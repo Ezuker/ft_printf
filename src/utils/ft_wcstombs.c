@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 17:30:35 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/21 18:09:51 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:42:04 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ size_t  ft_wcstombs(char *s, const wchar_t *pwcs, size_t n)
 
     while (i < n && pwcs[i] != L'\0')
     {
-        if (pwcs[i] < 0x80)
+        if (pwcs[i] < 128)
         {
             s[j++] = pwcs[i];
         }
-        else if (pwcs[i] < 0x800)
+        else if (pwcs[i] < 2048)
         {
             s[j++] = 0xC0 | (pwcs[i] >> 6);
             s[j++] = 0x80 | (pwcs[i] & 0x3F);
