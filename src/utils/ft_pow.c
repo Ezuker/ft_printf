@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 23:04:16 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/22 23:05:08 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/22 23:57:46 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int binary_power_long(long double x)
     int power;
 
     power = 0;
-    while (x > 2)
+    while (x > 16)
     {
         x = x / 2;
         power++;

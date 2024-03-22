@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 21:24:15 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/22 23:37:11 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/22 23:56:39 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char *get_hexa_floating_point(t_data **data, va_list args)
     else if ((*data)->length_type == BIG_L)
     {
         result_l = va_arg(args, long double);
-        nb_power = binary_power(result_l);
+        nb_power = binary_power_long(result_l);
         result_l = result_l / ft_pow(2, nb_power);
         res = ft_hexa_lftoa(result_l, 16, "0123456789abcdef");
         res = ft_strjoin("0x", res);

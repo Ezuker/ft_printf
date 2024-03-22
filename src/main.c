@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 21:20:50 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/22 23:50:25 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/22 23:55:30 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ int main()
     long double  test2 = FLT_MAX;
     printf("%a\n", test);
     printf("%La\n", test2);
+
+    ft_printf("%a\n", test);
+    ft_printf("%La\n", test2);
 
     // long double   test2 = 54484894684.48948948948;
     // setlocale(LC_ALL, "");
