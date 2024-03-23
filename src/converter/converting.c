@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 14:17:12 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/22 21:27:18 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/23 22:39:20 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void    converter(t_data **data, char **s, va_list args)
     char    *result;
 
     result = NULL;
-    *data = (*data)->next;
     if ((*data)->type == DECIMAL)
         result = get_decimal(data, s, args);
     if ((*data)->type == POINTER)

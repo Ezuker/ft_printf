@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 14:00:44 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/22 21:27:52 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/23 22:40:29 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_data_type return_type(char **cursor, t_data_type type)
 {
-    (*cursor) += 1;
+    (*cursor) = *cursor + 1;
     return (type);
 }
 

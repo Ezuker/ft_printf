@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 21:25:28 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/22 23:36:07 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/23 22:42:47 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # include "struct.h"
 
-void        parse(t_data *data, char *string);
+void        parse(t_data *data, char **string, va_list args);
 void        struct_init(t_data *data);
 int         ft_atoi(const char *str);
 char        *ft_itoa(intmax_t n, int base, char *s);
@@ -53,7 +53,7 @@ char        *remove_zero(char *src);
 t_flags             get_flags(char **cursor);
 t_precision_type    get_precision_type(t_data_type type);
 t_data_type         get_type(char **cursor);
-int                 get_width(char **cursor);
+int                 get_width(char **cursor, va_list args);
 t_length            get_length(char **cursor);
 char                *ft_strdup(const char *s);
 void                converter(t_data **data, char **s, va_list args);
@@ -70,5 +70,7 @@ char    *get_float(t_data **data, va_list args);
 char    *get_scientific(t_data **data, va_list args);
 char    *get_shortest_float(t_data **data, va_list args);
 char    *get_hexa_floating_point(t_data **data, va_list args);
+
+int     writer(t_data *data);
 
 #endif

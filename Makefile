@@ -57,6 +57,7 @@ SRC = \
 	src/converter/scientific.c \
 	src/converter/shortest_float.c \
 	src/converter/hexa_floating_point.c \
+	src/writer/writing.c \
 
 
 INCLUDES = \

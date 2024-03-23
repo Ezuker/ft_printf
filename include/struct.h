@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:10:44 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/22 21:27:30 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/23 22:37:42 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ typedef struct s_data
     char            *string;
     wchar_t          *w_string;
     t_data_type     type;
-    struct s_data   *next;
+    // struct s_data   *next;
 }               t_data;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:13:27 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/21 16:55:24 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/23 22:39:09 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,4 @@ void    struct_init(t_data *data)
     data->type = DATA_NONE;
     data->string = NULL;
     data->w_string = NULL;
-    data->next = NULL;
 }
