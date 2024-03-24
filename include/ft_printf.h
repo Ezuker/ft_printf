@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 21:25:28 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/23 22:42:47 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/24 20:13:49 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 
 # include "struct.h"
 
+int ft_printf(const char *s, ...);
+
 void        parse(t_data *data, char **string, va_list args);
 void        struct_init(t_data *data);
 int         ft_atoi(const char *str);
@@ -35,6 +37,7 @@ size_t      ft_strlen(const char *s);
 size_t      ft_wstrlen(const wchar_t *s);
 char        *ft_strdup(const char *s);
 size_t      ft_wcstombs(char *s, const wchar_t *pwcs, size_t n);
+wchar_t     *ft_wcsdup(wchar_t *s);
 char        *ft_strjoin(char *s1, char *s2);
 char        *ft_ftoa(double n, int afpoint, int base, char *s_base);
 char        *ft_lftoa(long double n, int afpoint, int base, char *s_base);
@@ -48,7 +51,8 @@ int         binary_power_long(long double x);
 int         nb_number_after_dot(long double n);
 char        *ft_toupper(char* s);
 char        *remove_zero(char *src);
-
+char    *ft_strjoin_free(char *s1, char *s2, int which);
+char    *ft_substr(char const *s, unsigned int start, size_t len);
 
 t_flags             get_flags(char **cursor);
 t_precision_type    get_precision_type(t_data_type type);
@@ -71,6 +75,7 @@ char    *get_scientific(t_data **data, va_list args);
 char    *get_shortest_float(t_data **data, va_list args);
 char    *get_hexa_floating_point(t_data **data, va_list args);
 
-int     writer(t_data *data);
+size_t      writer(t_data *data);
+int         precision_write(t_data *data);
 
 #endif

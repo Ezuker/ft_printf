@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:44:59 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/22 21:48:02 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/23 23:30:42 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ char    *get_scientific(t_data **data, va_list args)
         res = ft_strjoin(res, "+");
     if (nb_power < 10)
         res = ft_strjoin(res, "0");
-    res = ft_strjoin(res, ft_itoa(nb_power, 10, "0123456789"));
+    res = ft_strjoin_free(res, ft_itoa(nb_power, 10, "0123456789"), 2);
     return (res);
 }

@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   width.c                                            :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 13:57:14 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/24 17:47:24 by bcarolle         ###   ########.fr       */
+/*   Created: 2024/03/24 18:33:41 by bcarolle          #+#    #+#             */
+/*   Updated: 2024/03/24 18:33:51 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int get_width(char **cursor, va_list args)
+char    *ft_substr(char const *s, unsigned int start, size_t len)
 {
-    int result;
+    char    *str;
+    size_t  i;
 
-    if (**cursor == '*')
+    i = 0;
+    if (!s)
+        return (NULL);
+    if (ft_strlen(s) < start)
+        return (ft_strdup(""));
+    str = (char *)malloc(sizeof(char) * (len + 1));
+    if (!str)
+        return (NULL);
+    while (i < len && s[start])
     {
-        result = (int)va_arg(args, int);
-        (*cursor)++;
+        str[i] = s[start];
+        i++;
+        start++;
     }
-    else
-    {
-        result = ft_atoi(*cursor);
-        while (**cursor >= '0' && **cursor <= '9')
-            (*cursor)++;
-    }
-    return (result);
+    str[i] = '\0';
+    return (str);
 }

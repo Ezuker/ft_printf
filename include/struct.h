@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:10:44 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/23 22:37:42 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/24 18:26:55 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ typedef enum e_data_type
     DATA_NONE
 }           t_data_type;
 
+typedef enum e_bool
+{
+    FALSE,
+    TRUE
+}           t_bool;
+
 typedef struct s_data
 {
     //minimum number to be printed
@@ -89,6 +95,7 @@ typedef struct s_data
     t_length        length_type;
     char            *string;
     wchar_t          *w_string;
+    size_t          len;
     t_data_type     type;
     // struct s_data   *next;
 }               t_data;

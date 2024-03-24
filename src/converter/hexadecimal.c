@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:16:39 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/21 16:37:16 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/24 20:04:02 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,15 @@ static char    *write_hexa(t_data **data,intmax_t number)
         base = ft_strdup("0123456789ABCDEF");
     else
         base = ft_strdup("0123456789abcdef");
-    result = ft_itoa(number, 16, base);
+    if ((*data)->flag_type == HASHTAG 
+        && (*data)->type == HEXADECIMAL && number != 0)
+        result = ft_strdup("0x");
+    else if ((*data)->flag_type == HASHTAG 
+        && (*data)->type == HEXADECIMAL_CAPITAL && number != 0)
+        result = ft_strdup("0X");
+    else
+        result = ft_strdup("");
+    result = ft_strjoin_free(result, ft_itoa(number, 16, base), 3);
     free(base);
     return (result);
 }

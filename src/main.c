@@ -6,20 +6,27 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 21:20:50 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/23 22:46:57 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/24 21:54:06 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *s, ...)
+void    ft_free_all(t_data *data)
 {
-    va_list args;
-    char    *string;
-    t_data  *data;
+    if (data->string)
+        free(data->string);
+    if (data->w_string)
+        free(data->w_string);
+    free(data);
+}
 
-    string = (char *)s;
-    va_start(args, s);
+size_t root(va_list args, char *string)
+{
+    t_data  *data;
+    size_t  len;
+
+    len = 0;
     while (*string)
     {
         if (*string == '%')
@@ -30,23 +37,32 @@ int ft_printf(const char *s, ...)
             struct_init(data);
             parse(data, &string, args);
             converter(&data, &string, args);
-            writer(data);
-            free(data);
+            len += writer(data);
+            ft_free_all(data);
         }
         else
         {
             write(1, string, 1);
+            len++;
             string++;
         }
     }
-    va_end(args);
-    return (0);
+    return (len);
 }
 
-int main()
+int ft_printf(const char *s, ...)
 {
-    int     test = 34;
+    va_list args;
+    size_t  len;
 
-    printf("%f haha %d\n", (double)test, test);
-    ft_printf("%f haha %d\n", (double)test, test);
+    va_start(args, s);
+    len = root(args, (char *)s);
+    va_end(args);
+    return (len);
 }
+
+// int main()
+// {
+//     printf("printf: %d\n", printf(" %.2g ", 5456.456));
+//     printf("ft_printf: %d\n", ft_printf(" %.2g ", 5456.456));
+// }

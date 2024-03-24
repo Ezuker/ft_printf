@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:37:38 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/22 23:35:57 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/24 21:50:13 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ char    *get_shortest_float(t_data **data, va_list args)
     if ((*data)->length_type == LENGTH_NONE)
     {
         res = va_arg(args, double);
-        result_float = ft_ftoa(res, F_DIGIT, 10, "0123456789");
+        result_float = ft_ftoa(res, 2, 10, "0123456789");
         result_scientific = get_sscientific(data, res);
     }
     if ((*data)->length_type == BIG_L)
     {
         res_long = va_arg(args, long double);
-        result_float = ft_lftoa(res_long, F_DIGIT, 10, "0123456789");
+        result_float = ft_lftoa(res_long, 2, 10, "0123456789");
         result_scientific = get_sscientific_long(data, res_long);
     }
     if (ft_strlen(result_float) < ft_strlen(result_scientific))

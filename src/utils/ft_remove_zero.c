@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 23:35:42 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/22 23:36:32 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/23 23:31:32 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ char    *remove_zero(char *src)
     while (++j <= i)
         res[j] = src[j];
     res[j] = '\0';
+    free(src);
     return (res);
 }

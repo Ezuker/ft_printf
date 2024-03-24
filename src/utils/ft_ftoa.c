@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:43:46 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/22 23:04:10 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/23 23:30:22 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char    *ft_ftoa(double n, int afpoint, int base, char *s_base)
     res[i] = '.';
     fpart = fpart * (double)ft_pow(base, afpoint);
     fpart = ft_roundf(fpart);
-    res = ft_strjoin(res, ft_itoa((int)fpart, base, s_base));
+    res = ft_strjoin_free(res, ft_itoa((int)fpart, base, s_base), 2);
     return (res);
 }
 
@@ -46,6 +46,6 @@ char    *ft_lftoa(long double n, int afpoint, int base, char *s_base)
     res[i] = '.';
     fpart = fpart * ft_pow(base, afpoint);
     fpart = ft_roundf(fpart);
-    res = ft_strjoin(res, ft_itoa((long long int)fpart, base, s_base));
+    res = ft_strjoin_free(res, ft_itoa((long long int)fpart, base, s_base), 2);
     return (res);
 }
