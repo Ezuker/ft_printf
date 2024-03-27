@@ -6,13 +6,13 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:12:44 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/23 22:42:36 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/27 20:33:23 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void    add_data(t_data *data, char **cursor, va_list args)
+t_data *add_data(t_data *data, char **cursor, va_list args)
 {
     data->flag_type = get_flags(cursor);
     data->width = get_width(cursor, args);
@@ -26,11 +26,18 @@ static void    add_data(t_data *data, char **cursor, va_list args)
         data->precision.type = PRECISION_NONE;
     data->length_type = get_length(cursor);
     data->type = get_type(cursor);
+    if (data->type == NOT_VALID)
+    {
+        write(2, "Error: Invalid type\n", 21);
+        free(data);
+        return (NULL);
+    }
     if (data->precision.type == STR)
         data->precision.type = get_precision_type(data->type);
+    return (data);
 }
 
-void    parse(t_data *data, char **string, va_list args)
+int    parse(t_data *data, char **string, va_list args)
 {
     char    **cursor;
 
@@ -40,7 +47,9 @@ void    parse(t_data *data, char **string, va_list args)
         if (**cursor == '%')
         {
             (*cursor)++;
-            add_data(data, cursor, args); //cursor gonna increment though the parsing adddata
+            data = add_data(data, cursor, args);
+            if (!data)
+                return (1);
             string = cursor;
             break ;
         }
@@ -48,4 +57,5 @@ void    parse(t_data *data, char **string, va_list args)
             break ;
         (*cursor)++;
     }
+    return (0);
 }

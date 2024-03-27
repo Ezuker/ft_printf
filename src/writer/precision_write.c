@@ -6,27 +6,54 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:11:03 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/24 21:52:38 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/27 20:12:29 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int precision_str(t_data *data)
+char *precision_str(t_data **data, char *string)
 {
-    int len;
     char *str_cpy;
+    char *new_string;
+    int len;
 
     len = 0;
-    str_cpy = data->string;
-    while (*str_cpy && data->precision.value > 0)
+    str_cpy = string;
+    new_string = malloc(sizeof(char) * ((*data)->precision.value + 1));
+    if (!new_string)
+        return (NULL);
+    while (*str_cpy && (*data)->precision.value > 0)
     {
-        write(1, str_cpy, 1);
+        new_string[len] = *str_cpy;
         str_cpy++;
-        data->precision.value--;
+        (*data)->precision.value--;
         len++;
     }
-    return (len);
+    new_string[len] = '\0';
+    return (new_string);
+}
+
+wchar_t *precision_wstr(t_data **data, wchar_t *string)
+{
+    wchar_t *str_cpy;
+    wchar_t *new_string;
+    int len;
+
+    len = 0;
+    str_cpy = string;
+    new_string = malloc(sizeof(wchar_t) * ((*data)->precision.value + 1));
+    if (!new_string)
+        return (NULL);
+    while (*str_cpy && (*data)->precision.value > 0)
+    {
+        new_string[len] = *str_cpy;
+        str_cpy++;
+        (*data)->precision.value--;
+        len++;
+    }
+    new_string[len] = '\0';
+    return (new_string);
 }
 
 int ft_str_nb(char *str)
@@ -45,37 +72,43 @@ int ft_str_nb(char *str)
     return (counter);
 }
 
-int precision_int(t_data *data)
+char    *precision_int(t_data **data, char *str)
 {
-    int len;
+    char    *new_str;
+    char    *tmp_str;
 
-    len = 0;
-    if (data->precision.value > ft_str_nb(data->string))
+    if ((*data)->precision.value == 0 && ft_strlen(str) == 1 && *str == '0')
     {
-        while (len < data->precision.value - ft_str_nb(data->string))
-        {
-            write(1, "0", 1);
-            len++;
-        }
-        write(1, data->string, ft_strlen(data->string));
-        len += ft_strlen(data->string);
+        free(str);
+        return (ft_strdup(""));
     }
+    if ((*data)->precision.value <= (int)ft_str_nb(str))
+        return (str);
+    if (*str == '-' || *str == '+')
+        tmp_str = ft_substr(str, 1, ft_strlen(str) - 1);
     else
+        tmp_str = ft_strdup(str);
+    while (ft_str_nb(tmp_str) < (*data)->precision.value)
     {
-        write(1, data->string, ft_strlen(data->string));
-        len += ft_strlen(data->string);
+        new_str = ft_strjoin_free("0", tmp_str, 2);
+        tmp_str = new_str;
     }
-    return (len);
+    if (*str == '-')
+        new_str = ft_strjoin_free("-", new_str, 2);
+    if (*str == '+')
+        new_str = ft_strjoin_free("+", new_str, 2);
+    free(str);
+    return (new_str);
 }
 
-int precision_write(t_data *data)
-{
-    int len;
+// int precision_write(t_data *data)
+// {
+//     int len;
 
-    len = 0;
-    if (data->precision.type == STR)
-        len += precision_str(data);
-    if (data->precision.type == INTEGERS)
-        len += precision_int(data);
-    return (len);
-}
+//     len = 0;
+//     // if (data->precision.type == STR)
+//     //     len += precision_str(data);
+//     // if (data->precision.type == INTEGERS)
+//     //     len += precision_int(data);
+//     return (len);
+// }

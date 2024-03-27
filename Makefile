@@ -107,7 +107,7 @@ bonus: $(OBJ_BONUS)
 	@echo "$(_BOLD)$(_CYAN)Compiling Bonus($(_RED)$@$(_CYAN))$(_END)"
 	@echo
 	@echo " $(_BOLD)$(_RED)$(NAME) : $(_END)$(_GREY) $(CC) $(OBJ_BONUS) $(_END)"
-	# @$(CC) $(CFLAGS) -o $(NAME) $(OBJ_BONUS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ_BONUS)
 	@echo
 	@echo "$(_BOLD)$(_CYAN)Other ($(_RED)$@$(_CYAN))$(_END)"
 	$(norme)

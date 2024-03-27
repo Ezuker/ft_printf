@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 21:20:50 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/24 21:54:06 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/27 20:36:48 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ size_t root(va_list args, char *string)
             if (!data)
                 return (0);
             struct_init(data);
-            parse(data, &string, args);
+            if (parse(data, &string, args))
+                return (0);
             converter(&data, &string, args);
             len += writer(data);
             ft_free_all(data);
@@ -61,8 +62,8 @@ int ft_printf(const char *s, ...)
     return (len);
 }
 
-// int main()
-// {
-//     printf("printf: %d\n", printf(" %.2g ", 5456.456));
-//     printf("ft_printf: %d\n", ft_printf(" %.2g ", 5456.456));
-// }
+int main()
+{
+    printf("printf: %d\n", printf("%-ci%-cp%4cs%-11cx", 'a', 'b', 'c', 'd'));
+    printf("ft_printf: %d\n", ft_printf("%-ci%-cp%4cs%-11cx", 'a', 'b', 'c', 'd'));
+}

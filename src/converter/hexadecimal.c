@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:16:39 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/24 20:04:02 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/27 20:27:01 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ static char    *write_hexa(t_data **data,intmax_t number)
     else
         result = ft_strdup("");
     result = ft_strjoin_free(result, ft_itoa(number, 16, base), 3);
+    if ((*data)->flag_type == SPACE)
+        result = ft_strjoin_free(" ", result, 2);
     free(base);
+    if ((*data)->precision.type == INTEGERS)
+        return (precision_int(data, result));
     return (result);
 }
 

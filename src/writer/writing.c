@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 21:07:35 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/24 20:26:29 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/27 19:18:28 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int zero_flag(t_data *data)
         free(str_cpy);
     }
     s_len = ft_strlen(data->string) + data->len;
-    if (data->width < s_len)
+    if (data->width < (int)s_len)
         return (len);
     while (len < data->width - s_len)
     {
@@ -59,7 +59,7 @@ static int  minus_flag(t_data *data)
 
     len = 0;
     s_len = ft_strlen(data->string) + data->len;
-    if (data->width < s_len)
+    if (data->width < (int)s_len)
         return (0);
     while (len < data->width - s_len)
     {
@@ -76,7 +76,7 @@ int no_flag_width(t_data *data)
 
     len = 0;
     s_len = ft_strlen(data->string) + data->len;
-    if (data->width < s_len)
+    if (data->width < (int)s_len)
         return (0);
     while (len < data->width - s_len)
     {
@@ -98,11 +98,11 @@ int no_flag_precision(t_data *data)
 int no_flag(t_data *data)
 {
     size_t len;
-    size_t s_len;
+    // size_t s_len;
 
     len = 0;
     len += no_flag_width(data);
-    len += no_flag_precision(data);
+    // len += no_flag_precision(data);
     return (len);
 }
 
@@ -151,8 +151,8 @@ size_t writer(t_data *data)
             len += no_flag(data);
         if (data->len == 1 && ft_strlen(data->string) == 0)
             write(1, "\0", 1);
-        else if (data->precision.type != PRECISION_NONE)
-            len += precision_write(data);
+        // else if (data->precision.type != PRECISION_NONE)
+        //     len += precision_write(data);
         else 
         {
             write(1, data->string, ft_strlen(data->string));

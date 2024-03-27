@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:02:42 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/24 19:21:21 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/27 19:32:20 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static char    *write_decimal(t_data **data, intmax_t number)
     if ((*data)->flag_type == SPACE && number >= 0)
         result = ft_strjoin_free(" ", result, 2);
     free(base);
+    if ((*data)->precision.type == INTEGERS)
+        return (precision_int(data, result));
     return (result);
 }
 

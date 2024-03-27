@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 21:25:28 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/24 20:13:49 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/27 20:33:56 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 int ft_printf(const char *s, ...);
 
-void        parse(t_data *data, char **string, va_list args);
+int        parse(t_data *data, char **string, va_list args);
 void        struct_init(t_data *data);
 int         ft_atoi(const char *str);
 char        *ft_itoa(intmax_t n, int base, char *s);
@@ -53,6 +53,9 @@ char        *ft_toupper(char* s);
 char        *remove_zero(char *src);
 char    *ft_strjoin_free(char *s1, char *s2, int which);
 char    *ft_substr(char const *s, unsigned int start, size_t len);
+char    *precision_str(t_data **data, char *string);
+wchar_t *precision_wstr(t_data **data, wchar_t *string);
+char    *precision_int(t_data **data, char *str);
 
 t_flags             get_flags(char **cursor);
 t_precision_type    get_precision_type(t_data_type type);

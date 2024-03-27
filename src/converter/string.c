@@ -6,32 +6,44 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:41:16 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/23 23:01:15 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/27 19:24:46 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char    *write_string(char *string)
+static char    *write_string(t_data **data, char *string)
 {
     if (!string)
+    {
+        if ((*data)->precision.value > 0 && (*data)->precision.value < 6)
+            return (ft_strdup(""));
         return (ft_strdup("(null)"));
+    }
+    if ((*data)->precision.type == STR)
+        return (precision_str(data, string));
     return (ft_strdup(string));
 }
 
-static wchar_t    *write_wide_string(wchar_t *string)
+static wchar_t    *write_wide_string(t_data **data, wchar_t *string)
 {
     if (!string)
+    {
+        if ((*data)->precision.value > 0 && (*data)->precision.value < 6)
+            return (ft_wcsdup(L""));
         return (ft_wcsdup(L"(null)"));
+    }
+    if ((*data)->precision.type == STR)
+        return (precision_wstr(data, string));
     return (ft_wcsdup(string));
 }
 
 void    get_string(t_data **data, va_list args)
 {
     if ((*data)->length_type == LENGTH_NONE)
-        (*data)->string = write_string((char *) va_arg(args, char *));
+        (*data)->string = write_string(data, (char *) va_arg(args, char *));
     else if ((*data)->length_type == L)
-        (*data)->w_string = write_wide_string((wchar_t *)va_arg(args, wchar_t *));
+        (*data)->w_string = write_wide_string(data, (wchar_t *)va_arg(args, wchar_t *));
     else
         write(2, "Error: Unsupported length type\n", 31);
 }

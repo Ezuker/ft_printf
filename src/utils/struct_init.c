@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:13:27 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/24 18:27:01 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:07:22 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void    struct_init(t_data *data)
     data->flag_type = FLAGS_NONE;
     data->width = 0;
     data->precision.type = PRECISION_NONE;
+    data->precision.value = 0;
     data->length_type = LENGTH_NONE;
     data->type = DATA_NONE;
     data->string = NULL;
