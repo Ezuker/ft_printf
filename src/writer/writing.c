@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 21:07:35 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/28 02:31:11 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/28 19:31:15 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,21 @@ static int  minus_flag(t_data *data)
     return (len);
 }
 
-int no_flag_width(t_data *data)
+int	no_flag_width(t_data *data)
 {
-    size_t len;
-    size_t s_len;
+	size_t len;
+	size_t s_len;
 
-    len = 0;
-    s_len = ft_strlen(data->string) + data->len;
-    if (data->width < (int)s_len)
-        return (0);
-    while (len < data->width - s_len)
-    {
-        write(1, " ", 1);
-        len++;
-    }
-    return (len);
+	len = 0;
+	s_len = ft_strlen(data->string) + data->len;
+	if (data->width < (int)s_len)
+		return (0);
+	while (len < data->width - s_len)
+	{
+		write(1, " ", 1);
+		len++;
+	}
+	return (len);
 }
 
 int no_flag(t_data *data)

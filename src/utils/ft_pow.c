@@ -6,23 +6,23 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 23:04:16 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/22 23:57:46 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:50:56 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-long double  ft_pow(double x, int y)
+long double	ft_pow(double x, int y)
 {
-    double  res;
+	double	res;
 
-    res = 1;
-    while (y > 0)
-    {
-        res = res * x;
-        y--;
-    }
-    return (res);
+	res = 1;
+	while (y > 0)
+	{
+		res = res * x;
+		y--;
+	}
+	return (res);
 }
 
 int binary_power(double x)

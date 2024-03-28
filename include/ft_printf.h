@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 21:25:28 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/28 01:27:55 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:08:24 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@ int         binary_power(double x);
 int         binary_power_long(long double x);
 int         nb_number_after_dot(long double n);
 char        *ft_toupper(char* s);
-char        *remove_zero(char *src);
+char        *remove_zero(t_data **data, char *src);
 char    *ft_strjoin_free(char *s1, char *s2, int which);
 char    *ft_substr(char const *s, unsigned int start, size_t len);
 char    *precision_str(t_data **data, char *string);
 wchar_t *precision_wstr(t_data **data, wchar_t *string);
 char    *precision_int(t_data **data, char *str);
 char	*zero_flag(t_data **data, char *s);
+char	*add_zero(char *res, int afpoint);
 
 t_flags             get_flags(char **cursor);
 t_precision_type    get_precision_type(t_data_type type);

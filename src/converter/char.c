@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:30:21 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/28 02:37:36 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:02:21 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ static wchar_t	*write_wide_char(wchar_t number, t_data **data)
 	return (result);
 }
 
-void    get_char(t_data **data, va_list args)
+void	get_char(t_data **data, va_list args)
 {
-    if ((*data)->length_type == LENGTH_NONE)
-        (*data)->string = write_char((char) va_arg(args, int), data);
-    else if ((*data)->length_type == L)
-        (*data)->w_string = write_wide_char(va_arg(args, wchar_t), data);
-    else
-        write(2, "Error: Unsupported length type\n", 31);
+	if ((*data)->length_type == LENGTH_NONE)
+		(*data)->string = write_char((char) va_arg(args, int), data);
+	else if ((*data)->length_type == L)
+		(*data)->w_string = write_wide_char(va_arg(args, wchar_t), data);
+	else
+		write(2, "Error: Unsupported length type\n", 31);
 }
