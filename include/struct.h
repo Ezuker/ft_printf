@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:10:44 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/24 18:26:55 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/28 02:37:16 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,22 @@
 //Flags can't be mix only one. cuz Werror format
 typedef enum e_flags
 {
-    MINUS, //Works with width subspecifier
-    PLUS, //Works only with numbers
-    SPACE, //put space
-    //Works with o, x, X
-    //Works with a, A, e, E, f, F, g, G
-    HASHTAG,
-    ZERO, //Leaves 0 pads
-    FLAGS_NONE,
+	MINUS,
+	PLUS, //Works only with numbers
+	SPACE,
+	//Works with a, A, e, E, f, F, g, G
+	HASHTAG,
+	ZERO,
+	FLAGS_NONE,
 }           t_flags;
 
 typedef enum e_precision_type
 {
-    STR, //if < strlen its gonna shorter the string
-    G_SHORT, //it gonna print x DIGIT
-    INTEGERS, //Will print at least x caracters IF X == 0 AND THE VALUE TO PRINT IS 0; PRINT NOTHING
-    OTHER, //Number of digit to print AFTER the decimal point
-    PRECISION_NONE
+	STR,
+	INTEGERS,
+	G_SHORT, //it gonna print x DIGIT
+	OTHER, //Number of digit to print AFTER the decimal point
+	PRECISION_NONE
 }           t_precision_type;
 
 typedef struct s_precision

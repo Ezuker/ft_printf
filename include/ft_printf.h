@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 21:25:28 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/27 20:33:56 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/28 01:27:55 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char    *ft_substr(char const *s, unsigned int start, size_t len);
 char    *precision_str(t_data **data, char *string);
 wchar_t *precision_wstr(t_data **data, wchar_t *string);
 char    *precision_int(t_data **data, char *str);
+char	*zero_flag(t_data **data, char *s);
 
 t_flags             get_flags(char **cursor);
 t_precision_type    get_precision_type(t_data_type type);

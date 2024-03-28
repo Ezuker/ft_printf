@@ -5,32 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 13:57:44 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/28 02:32:25 by bcarolle         ###   ########.fr       */
+/*   Created: 2024/03/28 01:12:10 by bcarolle          #+#    #+#             */
+/*   Updated: 2024/03/28 01:31:28 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static t_flags return_flags(char **cursor, t_flags type, char c)
+char	*zero_flag(t_data **data, char *s)
 {
-	(*cursor)++;
-	while (**cursor == c)
-		(*cursor)++;
-	return (type);
-}
+	size_t	len;
+	char	*str_cpy;
 
-t_flags get_flags(char **cursor)
-{
-	if (**cursor == '-')
-		return (return_flags(cursor, MINUS, '-'));
-	if (**cursor == '+')
-		return (return_flags(cursor, PLUS, '+'));
-	if (**cursor == ' ')
-		return (return_flags(cursor, SPACE, ' '));
-	if (**cursor == '#')
-		return (return_flags(cursor, HASHTAG, '#'));
-	if (**cursor == '0')
-		return (return_flags(cursor, ZERO, '0'));
-	return (FLAGS_NONE);
+	len = 0;
+	if ((*data)->width < (int)ft_strlen(s))
+		return (s);
+	if (s && *s == '-' || *s == '+' || *s == ' ')
+		str_cpy = ft_substr(s, 1, ft_strlen(s) - 1);
+	else
+		str_cpy = ft_strdup(s);
+	while (len < (*data)->width - (int)ft_strlen(s))
+	{
+		str_cpy = ft_strjoin_free("0", str_cpy, 2);
+		len++;
+	}
+	if (s && *s == '-' || *s == '+' || *s == ' ')
+		str_cpy = ft_strjoin_free(ft_substr(s, 0, 1), str_cpy, 3);
+	free(s);
+	return (str_cpy);
 }

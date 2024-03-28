@@ -6,38 +6,38 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:30:21 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/24 17:14:00 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/28 02:37:36 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char    *write_char(int number, t_data **data)
+static char	*write_char(int number, t_data **data)
 {
-    char    *result;
+	char	*result;
 
-    result = malloc(sizeof(char) * 2);
-    if (!result)
-        return (NULL);
-    if (number == 0)
-        (*data)->len++;
-    result[0] = number;
-    result[1] = '\0';
-    return (result);
+	result = malloc(sizeof(char) * 2);
+	if (!result)
+		return (NULL);
+	if (number == 0)
+		(*data)->len++;
+	result[0] = number;
+	result[1] = '\0';
+	return (result);
 }
 
-static wchar_t   *write_wide_char(wchar_t number, t_data **data)
+static wchar_t	*write_wide_char(wchar_t number, t_data **data)
 {
-    wchar_t  *result;
+	wchar_t	*result;
 
-    result = malloc(sizeof(wchar_t) * 2);
-    if (!result)
-        return (NULL);
-    if (number == 0)
-        (*data)->len++;
-    result[0] = number;
-    result[1] = '\0';
-    return (result);
+	result = malloc(sizeof(wchar_t) * 2);
+	if (!result)
+		return (NULL);
+	if (number == 0)
+		(*data)->len++;
+	result[0] = number;
+	result[1] = '\0';
+	return (result);
 }
 
 void    get_char(t_data **data, va_list args)

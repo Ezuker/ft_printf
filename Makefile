@@ -62,6 +62,7 @@ SRC_BONUS = \
 	src/converter/hexa_floating_point.c \
 	src/writer/writing.c \
 	src/writer/precision_write.c \
+	src/writer/flags.c \
 
 
 INCLUDES = \
@@ -89,7 +90,7 @@ $(NAME): $(OBJ)
 	@echo "$(_BOLD)$(_CYAN)Compiling ($(_RED)$@$(_CYAN))$(_END)"
 	@echo
 	@echo " $(_BOLD)$(_RED)$(NAME) : $(_END)$(_GREY) $(CC) $(OBJ) $(_END)"
-	# @$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 	@echo
 	@echo "$(_BOLD)$(_CYAN)Other ($(_RED)$@$(_CYAN))$(_END)"
 	$(norme)

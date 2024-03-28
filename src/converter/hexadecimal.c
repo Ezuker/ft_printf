@@ -6,36 +6,38 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:16:39 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/27 20:27:01 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/28 02:04:52 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char    *write_hexa(t_data **data,intmax_t number)
+static char	*write_hexa(t_data **data, intmax_t number)
 {
-    char    *result;
-    char    *base;
+	char	*result;
+	char	*base;
 
-    if ((*data)->type == HEXADECIMAL_CAPITAL)
-        base = ft_strdup("0123456789ABCDEF");
-    else
-        base = ft_strdup("0123456789abcdef");
-    if ((*data)->flag_type == HASHTAG 
-        && (*data)->type == HEXADECIMAL && number != 0)
-        result = ft_strdup("0x");
-    else if ((*data)->flag_type == HASHTAG 
-        && (*data)->type == HEXADECIMAL_CAPITAL && number != 0)
-        result = ft_strdup("0X");
-    else
-        result = ft_strdup("");
-    result = ft_strjoin_free(result, ft_itoa(number, 16, base), 3);
-    if ((*data)->flag_type == SPACE)
-        result = ft_strjoin_free(" ", result, 2);
-    free(base);
-    if ((*data)->precision.type == INTEGERS)
-        return (precision_int(data, result));
-    return (result);
+	if ((*data)->type == HEXADECIMAL_CAPITAL)
+		base = ft_strdup("0123456789ABCDEF");
+	else
+		base = ft_strdup("0123456789abcdef");
+	if ((*data)->flag_type == HASHTAG
+		&& (*data)->type == HEXADECIMAL && number != 0)
+		result = ft_strdup("0x");
+	else if ((*data)->flag_type == HASHTAG
+		&& (*data)->type == HEXADECIMAL_CAPITAL && number != 0)
+		result = ft_strdup("0X");
+	else
+		result = ft_strdup("");
+	result = ft_strjoin_free(result, ft_itoa(number, 16, base), 3);
+	if ((*data)->flag_type == SPACE)
+		result = ft_strjoin_free(" ", result, 2);
+	free(base);
+	if ((*data)->precision.type == INTEGERS)
+		return (precision_int(data, result));
+	if ((*data)->flag_type == ZERO && (*data)->precision.type != INTEGERS)
+		result = zero_flag(data, result);
+	return (result);
 }
 
 char    *get_hexa(t_data **data, char **s, va_list args)
