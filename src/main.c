@@ -6,7 +6,7 @@
 /*   By: bcarolle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 21:20:50 by bcarolle          #+#    #+#             */
-/*   Updated: 2024/03/28 22:13:34 by bcarolle         ###   ########.fr       */
+/*   Updated: 2024/03/28 23:20:42 by bcarolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_printf(const char *s, ...)
 
 int main()
 {
-	printf("\nprintf %d\n", printf("%.5a", 4489498948498.46));
-	printf("\nftprintf %d\n", ft_printf("%.5a", 4489498948498.46));
+	printf("\nprintf %d\n", printf("%016.5a", 46546.456));
+	printf("\nftprintf %d\n", ft_printf("%016.5a", 46546.456));
 	return (0);
 }
