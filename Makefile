@@ -24,60 +24,69 @@ _ICYAN=$'\033[46m
 _IWHITE=$'\033[47m
 
 SRC = \
+	src/ft_printf.c \
+	src/ft_puthexa.c \
+	src/ft_printf_utils.c \
+	src/ft_printf_unsigned.c \
+	src/ft_ppercent.c \
+	src/ft_utils.c \
+	src/ft_utilslibft.c \
 
 SRC_BONUS = \
-	src/main.c \
-	src/parsing/parse.c \
-	src/parsing/flags.c \
-	src/parsing/width.c \
-	src/parsing/precision.c \
-	src/parsing/length.c \
-	src/parsing/type.c \
-	src/utils/struct_init.c \
-	src/utils/ft_atoi.c \
-	src/utils/ft_strlen.c \
-	src/utils/ft_itoa.c \
-	src/utils/ft_strdup.c \
-	src/utils/ft_wcstombs.c \
-	src/utils/ft_ftoa.c \
-	src/utils/ft_strjoin.c \
-	src/utils/ft_roundf.c \
-	src/utils/ft_recalloc.c \
-	src/utils/ft_pow.c \
-	src/utils/ft_nb_floating_digit.c \
-	src/utils/ft_toupper.c \
-	src/utils/ft_remove_zero.c \
-	src/utils/ft_substr.c \
-	src/converter/converting.c \
-	src/converter/decimal.c \
-	src/converter/octal.c \
-	src/converter/unsigned.c \
-	src/converter/hexadecimal.c \
-	src/converter/char.c \
-	src/converter/string.c \
-	src/converter/pointer.c \
-	src/converter/float.c \
-	src/converter/scientific.c \
-	src/converter/shortest_float.c \
-	src/converter/hexa_floating_point.c \
-	src/writer/writing.c \
-	src/writer/precision_write.c \
-	src/writer/flags.c \
+	src_bonus/main.c \
+	src_bonus/parsing/parse.c \
+	src_bonus/parsing/flags.c \
+	src_bonus/parsing/width.c \
+	src_bonus/parsing/precision.c \
+	src_bonus/parsing/length.c \
+	src_bonus/parsing/type.c \
+	src_bonus/utils/struct_init.c \
+	src_bonus/utils/ft_atoi.c \
+	src_bonus/utils/ft_strlen.c \
+	src_bonus/utils/ft_itoa.c \
+	src_bonus/utils/ft_strdup.c \
+	src_bonus/utils/ft_wcstombs.c \
+	src_bonus/utils/ft_ftoa.c \
+	src_bonus/utils/ft_strjoin.c \
+	src_bonus/utils/ft_roundf.c \
+	src_bonus/utils/ft_pow.c \
+	src_bonus/utils/ft_nb_floating_digit.c \
+	src_bonus/utils/ft_toupper.c \
+	src_bonus/utils/ft_remove_zero.c \
+	src_bonus/utils/ft_substr.c \
+	src_bonus/utils/ft_zeroflag.c \
+	src_bonus/converter/converting.c \
+	src_bonus/converter/decimal.c \
+	src_bonus/converter/octal.c \
+	src_bonus/converter/unsigned.c \
+	src_bonus/converter/hexadecimal.c \
+	src_bonus/converter/char.c \
+	src_bonus/converter/string.c \
+	src_bonus/converter/pointer.c \
+	src_bonus/converter/float.c \
+	src_bonus/converter/scientific.c \
+	src_bonus/converter/shortest_float.c \
+	src_bonus/converter/hexa_floating_point.c \
+	src_bonus/converter/flag_g_to_char.c \
+	src_bonus/writer/writing.c \
+	src_bonus/writer/precision_write.c \
+	src_bonus/writer/flags.c \
 
 
 INCLUDES = \
 	-I./include/ \
 
 INCLUDES_BONUS = \
-	-I./include/ \
+	-I./include_bonus/ \
 
 OBJ = $(SRC:%.c=$(BUILD_DIR)%.o)
 OBJ_BONUS = $(SRC_BONUS:%.c=$(BUILD_DIR_BONUS)%.o)
 BUILD_DIR = ./build/
 BUILD_DIR_BONUS = ./build_bonus/
 CC = cc
-CFLAGS = -g
-NAME = ft_printf
+CFLAGS = -g -Wall -Werror -Wextra
+NAME = libftprintf.a
+NAME_BONUS = libftprintf.a
 NORME_ERROR = $(shell norminette $(SRC) include/ | grep "Error" | wc -l)
 BOOL_EXEC = 0
 EXEC = ./$(NAME)
@@ -89,13 +98,12 @@ $(NAME): $(OBJ)
 	@echo
 	@echo "$(_BOLD)$(_CYAN)Compiling ($(_RED)$@$(_CYAN))$(_END)"
 	@echo
-	@echo " $(_BOLD)$(_RED)$(NAME) : $(_END)$(_GREY) $(CC) $(OBJ) $(_END)"
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@echo "$(_BOLD)$(_CYAN)ar rcs $(_RED)$(NAME) $(_END)$(_GREY)$(OBJ)$(_END)"
+	@ar rcs $@ $^
 	@echo
 	@echo "$(_BOLD)$(_CYAN)Other ($(_RED)$@$(_CYAN))$(_END)"
 	$(norme)
 	@echo
-	@ar rcs libftprintf.a $(OBJ)
 	@ \
 	if [ $(BOOL_EXEC) -eq 1 ]; then \
 		@echo "$(_BOLD)$(_CYAN)Executing...$(_END)"; \
@@ -107,13 +115,12 @@ bonus: $(OBJ_BONUS)
 	@echo
 	@echo "$(_BOLD)$(_CYAN)Compiling Bonus($(_RED)$@$(_CYAN))$(_END)"
 	@echo
-	@echo " $(_BOLD)$(_RED)$(NAME) : $(_END)$(_GREY) $(CC) $(OBJ_BONUS) $(_END)"
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ_BONUS)
+	@echo "$(_BOLD)$(_CYAN)ar rcs $(_RED)$(NAME) $(_END)$(_GREY)$(OBJ_BONUS)$(_END)"
+	@ar rcs $(NAME) $^
 	@echo
 	@echo "$(_BOLD)$(_CYAN)Other ($(_RED)$@$(_CYAN))$(_END)"
 	$(norme)
 	@echo
-	@ar rcs libftprintf.a $(OBJ_BONUS)
 	@ \
 	if [ $(BOOL_EXEC) -eq 1 ]; then \
 		@echo "$(_BOLD)$(_CYAN)Executing...$(_END)"; \
@@ -159,8 +166,6 @@ clean:
 	@echo "$(_BOLD)$(_CYAN)Cleaning...$(_END)"
 	@rm -rf $(BUILD_DIR)
 	@rm -rf $(BUILD_DIR_BONUS)
-	@rm -f $(OBJ)
-	@rm -f libftprintf.a
 
 fclean: clean
 	@rm -f $(NAME)
